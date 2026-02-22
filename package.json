@@ -1,17 +1,37 @@
 {
   "name": "spectrum-common",
-  "module": "src/index.ts",
+  "version": "0.0.1",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "check": "ultracite check",
+    "fix": "ultracite fix"
+  },
   "devDependencies": {
     "@biomejs/biome": "2.4.0",
     "@types/bun": "latest",
+    "tsup": "^8.5.1",
     "ultracite": "7.2.3"
   },
   "peerDependencies": {
     "typescript": "^5"
-  },
-  "scripts": {
-    "check": "ultracite check",
-    "fix": "ultracite fix"
   }
 }
